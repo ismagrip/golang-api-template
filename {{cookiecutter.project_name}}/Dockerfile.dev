@@ -24,4 +24,4 @@ COPY --from=build-stage /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 
 EXPOSE $PORT
 
-ENTRYPOINT ["/app/guest_service"]
+ENTRYPOINT ["/app/{{cookiecutter.project_name}}"]
