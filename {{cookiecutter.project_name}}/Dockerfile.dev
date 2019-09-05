@@ -1,0 +1,27 @@
+FROM golang:alpine as build-stage
+
+ENV PORT :5000
+
+RUN apk --no-cache add git make ca-certificates 
+
+WORKDIR /go/src/app
+COPY go.mod .
+COPY go.sum .
+
+ENV GO111MODULE on
+ENV CGO_ENABLED 0
+ENV GOOS linux
+RUN go mod download
+
+COPY . .
+RUN make build
+
+FROM scratch
+WORKDIR /app
+COPY --from=build-stage /go/src/app/bin/{{cookiecutter.project_name}} ./{{cookiecutter.project_name}}
+COPY --from=build-stage /go/src/app/config.toml ./config.toml
+COPY --from=build-stage /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
+
+EXPOSE $PORT
+
+ENTRYPOINT ["/app/guest_service"]

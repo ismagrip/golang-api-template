@@ -1,0 +1,9 @@
+[database]
+host=""
+name=""
+user="admin"
+password=""
+
+[server]
+port=":8080"
+benchmark= false
