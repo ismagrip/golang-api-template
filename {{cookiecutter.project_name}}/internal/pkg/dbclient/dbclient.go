@@ -1,6 +1,7 @@
 package dbclient
 
 import (
+	"{{cookiecutter.git_hoster}}/{{cookiecutter.owner}}/{{cookiecutter.project_name}}/internal/pkg/config"
 	"github.com/sirupsen/logrus"
 )
 
