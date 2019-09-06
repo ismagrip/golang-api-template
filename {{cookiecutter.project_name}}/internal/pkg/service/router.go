@@ -24,7 +24,7 @@ func (s *server) setUpRouter(cfg *config.Config) error {
 	}
 
 	//Custom routes
-	s.router.Mount("/first_route",s.{{cookiecutter.project_name}}FirstRoute)
+	s.router.Mount("/first_route",s.{{cookiecutter.project_name}}FirstRoute())
 
 	//for debugging
 	printWorkingRoutes(s.router)
