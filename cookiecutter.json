@@ -2,5 +2,6 @@
     "project_name":"go-api",
     "owner":"Labhash",
     "git_hoster":"github.com",
+    "git_name":"Esaws",
     "db_type":["SQL","NoSQL"]
 }
