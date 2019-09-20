@@ -4,7 +4,7 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
-
+	"{{cookiecutter.git_hoster}}/{{cookiecutter.owner}}/{{cookiecutter.project_name}}/internal/pkg/service"
 	"{{cookiecutter.git_hoster}}/{{cookiecutter.owner}}/{{cookiecutter.project_name}}/internal/pkg/config"
 	"{{cookiecutter.git_hoster}}/{{cookiecutter.owner}}/{{cookiecutter.project_name}}/internal/pkg/dbclient"
 	log "github.com/sirupsen/logrus"
@@ -25,7 +25,7 @@ func main() {
 
 	log.Infof("PID: %d", os.Getpid())
 	log.Infof("Server port: %s", cfg.Server.Port)
-	log.Errorf("Server could not be started: %s", service.StartServer(connection, storage, cfg).Error())
+	log.Errorf("Server could not be started: %s", service.StartServer(connection, cfg).Error())
 
 }
 

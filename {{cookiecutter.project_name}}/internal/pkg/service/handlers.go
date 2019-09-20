@@ -10,7 +10,6 @@ import (
 
 type handler struct {
 	con     dbclient.DBclient
-	dClient distance.DistanceClient
 }
 
 func newHandler(con dbclient.DBclient) *handler {

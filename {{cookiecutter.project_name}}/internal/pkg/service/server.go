@@ -13,9 +13,9 @@ type server struct {
 	router  *chi.Mux
 }
 
-func StartServer(connection dbclient.DBClient, storage, cfg *config.Config) error {
+func StartServer(connection dbclient.DBclient,  cfg *config.Config) error {
 
-	server, err := newServer(connection, storage, cfg)
+	server, err := newServer(connection,cfg)
 	if err != nil {
 		return err
 	}
@@ -23,7 +23,7 @@ func StartServer(connection dbclient.DBClient, storage, cfg *config.Config) erro
 	return http.ListenAndServe(cfg.Server.Port, server.router)
 }
 
-func newServer(connection dbclient.DBClient, storage, cfg *config.Config) (*server, error) {
+func newServer(connection dbclient.DBclient, cfg *config.Config) (*server, error) {
 	handler := newHandler(connection)
 	server := server{
 		handler,
